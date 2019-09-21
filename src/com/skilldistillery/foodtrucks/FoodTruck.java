@@ -18,6 +18,8 @@ public class FoodTruck {
 
 	}
 
+	
+
 	public String getName() {
 		return name;
 	}
