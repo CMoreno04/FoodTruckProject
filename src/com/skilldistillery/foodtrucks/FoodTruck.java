@@ -1,7 +1,7 @@
 package com.skilldistillery.foodtrucks;
 
 public class FoodTruck {
-	private static int truckId = 123;
+	private static int truckId = 8254;
 	private String name;
 	private String type;
 	private double rating;
@@ -17,8 +17,6 @@ public class FoodTruck {
 	public FoodTruck() {
 
 	}
-
-	
 
 	public String getName() {
 		return name;
@@ -45,9 +43,10 @@ public class FoodTruck {
 	}
 
 	public String truckToString() {
-		truckId++;
-		String truck = "TruckID:" + truckId +"\n"+ "Name:" + name + ".\n"+"Food Type:" + type + ".\n"+"Rating" + rating+ ".\n";
-		return truck;
+		truckId+=(int)(Math.random()*1000);
+		String truck = "TruckID: ZX" + truckId + "\n" + "Name: " + name + "\n" + "Food Type: " + type + "\n" + "Rating: "
+				+ rating + "\n";
+		return truck; 
 	}
 
 	public void showTruck() {

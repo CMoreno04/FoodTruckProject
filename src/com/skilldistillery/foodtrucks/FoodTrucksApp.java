@@ -3,8 +3,9 @@ package com.skilldistillery.foodtrucks;
 import java.util.Scanner;
 
 public class FoodTrucksApp {
-	FoodTruckLot trk = new FoodTruckLot();
-	FoodTruck[] trucks = trk.getTrucks();
+	private FoodTruckLot trk = new FoodTruckLot();
+	private FoodTruck[] trucks = trk.getTrucks();
+	private Double[] ratingsHiLo;
 
 	public static void main(String[] args) {
 		FoodTrucksApp app = new FoodTrucksApp();
@@ -14,13 +15,14 @@ public class FoodTrucksApp {
 
 	private void go() {
 		Scanner kb = new Scanner(System.in);
-		String name = null, type = null;
-		double rating = 0.0;
-		int i = 0, j = 0;
-		do {
 
+		String name, type;
+		double rating = 0.0;
+		int i = 0, j = 0, totRatings = 0, numTrks = 0;
+		do {
 			System.out.println("How many trucks will you be rating? ");
-			int numTrks = kb.nextInt();
+			numTrks = kb.nextInt();
+			ratingsHiLo = new Double[numTrks];
 
 			do {
 
@@ -28,27 +30,77 @@ public class FoodTrucksApp {
 
 				System.out.println("\nEnter Food Truck  information: ");
 
-				System.out.println("\nPlease provide the name: ");
-				name = kb.next();
+				System.out.println("\nPlease provide the name of the truck, or input \"Quit\" to coninue: ");
+				name = kb.nextLine();
+
+				if (name.equalsIgnoreCase("Quit")) {
+					break;
+				}
 				truck1.setName(name);
 
+
 				System.out.println("\nPlease provide the type: ");
-				type = kb.next();
+				type = kb.nextLine();
 				truck1.setType(type);
 
-				System.out.println("\nPlease provide the desired rating: ");
+				System.out.println("\nPlease enter your rating: 1-5 ");
 				rating = kb.nextDouble();
+
+				totRatings += rating;
+				ratingsHiLo[j] = rating;
+
 				truck1.setRating(rating);
-				trk.addTruckRating(rating);
 				trk.addnotherTruck(truck1);
+
 				j++;
 			} while (j < numTrks);
 
-			menu();
+			trucks = trk.getTrucks();
+
+			menu(totRatings, j);
 			break;
 
 		} while (i < 5);
 
+		kb.close();
+	}
+
+	private void menu(double totRatings, int numTrks) {
+		Scanner kb = new Scanner(System.in);
+		int i = 0;
+		do {
+
+			System.out.println("\nPlease make a selection from the menu: 1-4.");
+			System.out.println("1. Show All Trucks.");
+			System.out.println("2. See Average Rating of Food Trucks.");
+			System.out.println("3. See Highest Rated Truck.");
+			System.out.println("4. Quit.");
+			int input = kb.nextInt();
+
+			if (input == 1) {
+				displayFoodTrucks(trucks);
+			}
+
+			else if (input == 2) {
+				Double finalRtng = calculateAverage(totRatings, numTrks);
+				System.out.print("\nThe Rating is: ");
+				System.out.printf("%1f", finalRtng);
+			}
+
+			else if (input == 3) {
+				System.out.println("\nThe Highest Rated truck is");
+				getHighestRating(trucks);
+
+			} else if (input == 4) {
+				System.out.println("\nGoodbye! ");
+				i += 6;
+			}
+
+			else {
+				System.out.println("ERROR, TRY AGAIN!");
+			}
+
+		} while (i < 5);
 		kb.close();
 	}
 
@@ -58,41 +110,22 @@ public class FoodTrucksApp {
 		}
 	}
 
-	public void menu() {
-		Scanner kb = new Scanner(System.in);
-		FoodTruckLot trk = new FoodTruckLot();
-		int i = 0;
-		do {
+	private Double calculateAverage(double totRatings, int numTrks) {
+		Double average = totRatings / numTrks;
+		return average;
+	}
 
-			System.out.println("Please make a selection from the menu: 1-4.");
-			System.out.println("1. Show All Trucks.");
-			System.out.println("2. See Average Rating of Food Trucks.");
-			System.out.println("3. See Highest Rated Truck.");
-			System.out.println("4. Quit.");
-			int input = kb.nextInt();
+	private void getHighestRating(FoodTruck[] truckHi) {
+		double highest = truckHi[0].getRating();
+		int highIndx = 0;
 
-			if (input < 4) {
-				switch (input) {
+		for (int i = 0; i < trucks.length; i++) {
 
-				case 1: {
-					trucks = trk.getTrucks();
-					displayFoodTrucks(trucks);
-				}
-					break;
-				case 2:
-					trk.getAverage();
-					break;
-				case 3:
-					break;
-
-				}
+			if (truckHi[i].getRating() > highest) {
+				highest = truckHi[0].getRating();
+				highIndx = i;
 			}
-
-			else if (input == 4) {
-				break;
-			}
-
-		} while (i < 5);
-
+		}
+		truckHi[highIndx].showTruck();
 	}
 }
