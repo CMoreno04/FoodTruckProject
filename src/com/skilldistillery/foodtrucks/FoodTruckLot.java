@@ -4,7 +4,7 @@ public class FoodTruckLot {
 	private FoodTruck[] fudtrucks;
 	private int numbtrucks = 0;
 
-	private static int TruckLimit = 6;
+	private static int TruckLimit = 1000;
 
 	public FoodTruckLot() {
 		fudtrucks = new FoodTruck[TruckLimit];
