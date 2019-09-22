@@ -6,7 +6,6 @@ public class FoodTruckLot {
 
 	private static int TruckLimit = 6;
 
-
 	public FoodTruckLot() {
 		fudtrucks = new FoodTruck[TruckLimit];
 	}
@@ -15,8 +14,6 @@ public class FoodTruckLot {
 		fudtrucks[numbtrucks] = t;
 		numbtrucks++;
 	}
-
-	
 
 	public FoodTruck[] getTrucks() {
 		FoodTruck[] truckCopy;

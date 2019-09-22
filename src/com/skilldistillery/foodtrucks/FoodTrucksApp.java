@@ -18,49 +18,45 @@ public class FoodTrucksApp {
 
 		String name, type;
 		double rating = 0.0;
-		int i = 0, j = 0, totRatings = 0, numTrks = 0;
+		int j = 0, totRatings = 0, numTrks = 0;
+
+		System.out.println("How many trucks will you be rating? ");
+		numTrks = kb.nextInt();
+		ratingsHiLo = new Double[numTrks];
+
 		do {
-			System.out.println("How many trucks will you be rating? ");
-			numTrks = kb.nextInt();
-			ratingsHiLo = new Double[numTrks];
 
-			do {
+			FoodTruck truck1 = new FoodTruck();
+			kb.nextLine();
+			System.out.println("\nEnter Food Truck  information: ");
 
-				FoodTruck truck1 = new FoodTruck();
+			System.out.println("\nPlease provide the name of the truck, or input \"Quit\" to coninue: ");
+			name = kb.nextLine();
 
-				System.out.println("\nEnter Food Truck  information: ");
+			if (name.equalsIgnoreCase("Quit")) {
+				break;
+			}
+			truck1.setName(name);
 
-				System.out.println("\nPlease provide the name of the truck, or input \"Quit\" to coninue: ");
-				name = kb.nextLine();
+			System.out.println("\nPlease provide the type: ");
+			type = kb.nextLine();
+			truck1.setType(type);
 
-				if (name.equalsIgnoreCase("Quit")) {
-					break;
-				}
-				truck1.setName(name);
+			System.out.println("\nPlease enter your rating: 1-5 ");
+			rating = kb.nextDouble();
 
+			totRatings += rating;
+			ratingsHiLo[j] = rating;
 
-				System.out.println("\nPlease provide the type: ");
-				type = kb.nextLine();
-				truck1.setType(type);
+			truck1.setRating(rating);
+			trk.addnotherTruck(truck1);
 
-				System.out.println("\nPlease enter your rating: 1-5 ");
-				rating = kb.nextDouble();
+			j++;
+		} while (j < numTrks);
 
-				totRatings += rating;
-				ratingsHiLo[j] = rating;
+		trucks = trk.getTrucks();
 
-				truck1.setRating(rating);
-				trk.addnotherTruck(truck1);
-
-				j++;
-			} while (j < numTrks);
-
-			trucks = trk.getTrucks();
-
-			menu(totRatings, j);
-			break;
-
-		} while (i < 5);
+		menu(totRatings, j);
 
 		kb.close();
 	}
@@ -75,25 +71,25 @@ public class FoodTrucksApp {
 			System.out.println("2. See Average Rating of Food Trucks.");
 			System.out.println("3. See Highest Rated Truck.");
 			System.out.println("4. Quit.");
-			int input = kb.nextInt();
+			String input = kb.next();
 
-			if (input == 1) {
+			if (input.equals("1")) {
 				displayFoodTrucks(trucks);
 			}
 
-			else if (input == 2) {
+			else if (input.equals("2")) {
 				Double finalRtng = calculateAverage(totRatings, numTrks);
 				System.out.print("\nThe Rating is: ");
-				System.out.printf("%1f", finalRtng);
+				System.out.printf("%.1f", finalRtng);
 			}
 
-			else if (input == 3) {
+			else if (input.equals("3")) {
 				System.out.println("\nThe Highest Rated truck is");
 				getHighestRating(trucks);
 
-			} else if (input == 4) {
+			} else if (input.equals("4") || input.equalsIgnoreCase("Quit")) {
 				System.out.println("\nGoodbye! ");
-				i += 6;
+				break;
 			}
 
 			else {

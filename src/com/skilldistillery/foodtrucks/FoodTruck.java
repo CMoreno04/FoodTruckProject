@@ -43,10 +43,10 @@ public class FoodTruck {
 	}
 
 	public String truckToString() {
-		truckId+=(int)(Math.random()*1000);
-		String truck = "TruckID: ZX" + truckId + "\n" + "Name: " + name + "\n" + "Food Type: " + type + "\n" + "Rating: "
-				+ rating + "\n";
-		return truck; 
+		truckId += (int) (Math.random() * 1000);
+		String truck = "TruckID: ZX" + truckId + "\n" + "Name: " + name + "\n" + "Food Type: " + type + "\n"
+				+ "Rating: " + rating + "\n";
+		return truck;
 	}
 
 	public void showTruck() {
