@@ -12,7 +12,6 @@
 ### do/while Loops
 ### For each loops
 ### For loops
-### Object Initialization
 ### Encapsulation
 ### Constructors
 ### Object Instantiation
