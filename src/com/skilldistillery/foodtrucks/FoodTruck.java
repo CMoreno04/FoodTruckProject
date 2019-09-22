@@ -1,7 +1,7 @@
 package com.skilldistillery.foodtrucks;
 
 public class FoodTruck {
-	private int truckId = (int) (Math.random() * 10000);;
+	private int truckId = (int) (Math.random() * 10000);
 	private String name;
 	private String type;
 	private double rating;
