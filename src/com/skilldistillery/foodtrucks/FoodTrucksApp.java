@@ -44,7 +44,6 @@ public class FoodTrucksApp {
 			rating = kb.nextDouble();
 
 			totRatings += rating;
-			
 
 			truck1.setRating(rating);
 			trk.addnotherTruck(truck1);
