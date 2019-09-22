@@ -1,13 +1,14 @@
 package com.skilldistillery.foodtrucks;
 
 public class FoodTruck {
-	private int truckId = (int) (Math.random() * 10000);
+	private int truckId= (int) (Math.random() * 10000);
 	private String name;
 	private String type;
 	private double rating;
 
 	public FoodTruck(String name, String type, double rating) {
 		super();
+		
 		this.name = name;
 		this.type = type;
 		this.rating = rating;
