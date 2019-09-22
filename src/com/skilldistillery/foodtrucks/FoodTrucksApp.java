@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class FoodTrucksApp {
 	private FoodTruckLot trk = new FoodTruckLot();
 	private FoodTruck[] trucks = trk.getTrucks();
-	private Double[] ratingsHiLo;
 
 	public static void main(String[] args) {
 		FoodTrucksApp app = new FoodTrucksApp();
@@ -22,7 +21,6 @@ public class FoodTrucksApp {
 
 		System.out.println("How many trucks will you be rating? ");
 		numTrks = kb.nextInt();
-		ratingsHiLo = new Double[numTrks];
 
 		do {
 
@@ -46,7 +44,7 @@ public class FoodTrucksApp {
 			rating = kb.nextDouble();
 
 			totRatings += rating;
-			ratingsHiLo[j] = rating;
+			
 
 			truck1.setRating(rating);
 			trk.addnotherTruck(truck1);
