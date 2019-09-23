@@ -4,7 +4,7 @@
 
 ## Overview
 
-### Users will input and rate a preferred number of food trucks, then view the average rating and the highest-rated truck.
+### Users will input and rate a preferred number of food trucks. Furthermore, if the user would like to change the desired number of trucks, "Quit" can be inputed when asked for a name to exit the prompt. Subsequently, the user will select from a menu that will give the options to view a list of all trucks, the average rating, the highest-rated truck or exit the program. 
 
 ## Technologies/Topics Applied
 
