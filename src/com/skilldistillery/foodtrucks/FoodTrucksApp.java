@@ -77,7 +77,7 @@ public class FoodTrucksApp {
 			else if (input.equals("2")) {
 				Double finalRtng = calculateAverage(totRatings, numTrks);
 				System.out.print("\nThe Rating is: ");
-				System.out.printf("%.f", finalRtng);
+				System.out.printf("%.1f", finalRtng);
 			}
 
 			else if (input.equals("3")) {
